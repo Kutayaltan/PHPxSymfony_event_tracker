@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  New ProductController
+{% endblock %}
+
+{% block body %}
+  <h1>Create new Event</h1>
+
+  {{ include('product_controller/_form.html.twig') }}
+
+  <a href="{{ path('app_product_controller_index') }}" class="btn btn-secondary">back to list</a>
+{% endblock %}

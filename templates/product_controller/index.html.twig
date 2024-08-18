@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <a href="{{ path('app_product_controller_new') }}" class="btn btn-success m-3">Create new</a>
+
+  <div class="m-3">
+    <a href="{{ path('app_product_controller_index') }}" class="btn btn-secondary">All</a>
+    <a href="{{ path('app_product_controller_index', { type: 'Sport' }) }}" class="btn btn-secondary">Sport</a>
+    <a href="{{ path('app_product_controller_index', { type: 'Family' }) }}" class="btn btn-secondary">Family</a>
+    <a href="{{ path('app_product_controller_index', { type: 'Theatre' }) }}" class="btn btn-secondary">Theatre</a>
+  </div>
+
+  <div class="container">
+    <div class="row row-cols-md-3">
+      {% for product in product_controllers %}
+        <div class="card m-3" style="width: 18rem;">
+          <img class="card-img-top" src="{{ product.image }}" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.ename }}</h5>
+            <p class="card-text">{{ product.date ? product.date|date('Y-m-d') : '' }}</p>
+            <p class="card-text">{{ product.time ? product.time|date('H:i:s') : '' }}</p>
+            <p class="card-text">{{ product.Type }}</p>
+            <p class="card-text">{{ product.Email }}</p>
+            <p class="card-text">
+              <a href="{{ product.url }}" target="_blank">{{ product.url }}</a>
+            </p>
+            <a href="{{ path('app_product_controller_show', { id: product.id }) }}" class="btn btn-primary">Show</a>
+            <a href="{{ path('app_product_controller_edit', { id: product.id }) }}" class="btn btn-secondary">Edit</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}ProductController index{% endblock %}
+
+{% block body %}
+    <h1>ProductController index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ename</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Email</th>
+                <th>Url</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_controller in product_controllers %}
+            <tr>
+                <td>{{ product_controller.id }}</td>
+                <td>{{ product_controller.ename }}</td>
+                <td>{{ product_controller.date ? product_controller.date|date('Y-m-d') : '' }}</td>
+                <td>{{ product_controller.time ? product_controller.time|date('H:i:s') : '' }}</td>
+                <td>{{ product_controller.image }}</td>
+                <td>{{ product_controller.Type }}</td>
+                <td>{{ product_controller.Email }}</td>
+                <td>{{ product_controller.url }}</td>
+                <td>
+                    <a href="{{ path('app_product_controller_show', {'id': product_controller.id}) }}">show</a>
+                    <a href="{{ path('app_product_controller_edit', {'id': product_controller.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_controller_new') }}">Create new</a>
+{% endblock %} #}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <div class="container">
+  <div class="row row-cols-md-3">
+    {% for event in eventArr %}
+      <div class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" src="{{  event.image }}" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ event.ename }}</h5>
+          <p class="card-text">Date: {{ event.date|date('Y-m-d') }}</p>
+          <p class="card-text">Begin: {{ event.time|date('H:i:s') }}</p>
+          <a href="#">{{ event.url }}</a><br>
+          <a href="#" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+      
+    {% endfor %}
+  </div>
+</div>
+  </div>
+{% endblock %}
